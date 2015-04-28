@@ -1,4 +1,6 @@
 
+html, body {height:100%;width:100%;}
+
 #visibleRange{
 	width:100%;
 	height:100%;
@@ -22,11 +24,63 @@
 	border-color:#444444;
 }
 
+#text-large{
+	font-size:32px;
+	font-family:"宋体";
+	color:black;
+}
+
+#text-medium{
+	font-size:16px;
+	margin-top:0.5em;
+}
+
+#text-small{
+	font-size:0.5em;
+	margin-top:0.5em;
+	font-family:"宋体";
+}
+
 .accordion-button{
 	float:left;
 	width:auto;
 	height:auto;
 	margin-right:1em;
+}
+
+.accordion-button-copy{
+	
+}
+
+.accordion-text{
+	display:block;
+	cursor:pointer;
+	width:auto;
+	height:auto;
+	margin-right:1em;
+	font-family:"宋体";
+}
+
+.accordion-text-copy{
+	display:block;
+	cursor:pointer;
+	width:auto;
+	height:auto;
+	margin-right:1em;
+}
+
+.text-large-copy{
+	font-size:2em;
+}
+
+.text-medium-copy{
+	font-size:15.7px;
+	margin-top:0.5em;
+}
+
+.text-small-copy{
+	font-size:0.5em;
+	margin-top:0.5em;
 }
 
 .graggable{

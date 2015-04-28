@@ -17,8 +17,8 @@ var init = {
 		init.initText();			//初始化文本框
 		init.initTable();			//初始化表格
 		init.initAccordion();		//最后初始化折叠面板
-		//初始化所有备份控件
-		init.initSpare();
+		
+		init.initSpareButton();
 		
 		//初始化监听号
 		init.initListenClick();
@@ -32,27 +32,40 @@ var init = {
 		$("#button_cancel").button();
 	},
 	initText:function(){
+		
 	},
 	initEdit:function(){
 	},
 	initTable:function(){
 	},
-	initSpare:function(){
+	initSpareButton:function(){
 		//先在Button1上生成一个待拖曳控件
-		spareElement.add($("#button_submit"),"button","accordion-button");
-		spareElement.add($("#button_cancel"),"button","accordion-button");
+		spareElement.add($("#button_submit"),"button","accordion-button-copy");
+		spareElement.add($("#button_cancel"),"button","accordion-button-copy");
+	},
+	initSpareText : function(){
+		//在文本框上生成备用文本
+		spareElement.add($("#text-large") ,"span","accordion-text-copy text-large-copy");
+		spareElement.add($("#text-medium"),"div","accordion-text-copy text-medium-copy");
+		spareElement.add($("#text-small") ,"div","accordion-text-copy text-small-copy");
 	},
 	initListenClick:function(){
 		//监听a-Button点击事件
 		$("#a-button,#a-edit,#a-table,#a-text").click(function(){
 			switch($(this).attr("id")){
 				case "a-button":
-				
-					$(".accordion-button").show();
+					setTimeout(function(){$(".accordion-button-copy").show()},500);
+					$(".accordion-text-copy").hide();	
+					break;
+				case "a-text":
+					if($(".accordion-text-copy").size() == 0);
+						setTimeout(function(){init.initSpareText();init.initSpareText();},600);
+					setTimeout(function(){$(".accordion-text-copy").show()},500);
+					$(".accordion-button-copy").hide();
 					break;
 				default:
-					$(".accordion-button").hide();
-					
+					$(".accordion-button-copy").hide();
+					$(".accordion-text-copy").hide();					
 			}
 		});
 	}
@@ -66,6 +79,8 @@ var spareElement = {
 		//获取元素内容
 		var text = x.text();
 		//元素CSS样式，主要是设置位置与原有元素相同
+		//if(tag=="div")
+			//alert(x.position().top);
 		var styleAttr = 'style="position: absolute;top:'+
 						x.position().top +'px;left:'+
 						x.position().left+'px;"';
@@ -73,17 +88,26 @@ var spareElement = {
 		$elem = '<'+tag+' '+styleAttr+'class="'+classAttr+' " >'+
 				''+text+'</'+tag+'>';
 		$('body').append($elem);	//添加元素
-		spareElement.setSpareByClassType(classType);
-		$("."+classType).draggable({cancel:".title"});//设置元素可拖曳
+		var space = classType.indexOf(" ");
+		var cty;
+		if(space > 0)
+			cty = classType.substring(0,space);
+		else
+			cty = classType;
+		spareElement.setSpareByClassType(x,classType);
+		$("."+cty).draggable({cancel:".title"});//设置元素可拖曳
 		//给所有控件注册鼠标弹起事件,每弹起一次，就生成一个新的当前控件
-		$("."+classType).on("mouseup",function(){
+		$("."+cty).on("mouseup",function(){
 			spareElement.add(x,tag,classType);
 		});
 	},
-	setSpareByClassType:function(classType){
+	
+	setSpareByClassType:function(x,classType){
 		switch(classType){
-			case "accordion-button":
-				$(".accordion-button").button();	//设置元素
+			case "accordion-button-copy":
+				$(".accordion-button-copy").button();	//设置元素
+				break;
+			case "accordion-text-copy":
 				break;
 		};
 	}
