@@ -1,0 +1,34 @@
+
+#visibleRange{
+	width:100%;
+	height:100%;
+}
+
+#accordion{
+	float:left;
+	width:20%;
+	height:100%;
+	display:inline;
+}
+
+#drawArea{
+	display: inline;
+	float:right;
+	width:78% ;
+	height:100%;
+	background:#cccccc;
+	margin: 2px 2px 2px 2px;
+	padding: .7em .5em .5em .7em;
+	border-color:#444444;
+}
+
+.accordion-button{
+	float:left;
+	width:auto;
+	height:auto;
+	margin-right:1em;
+}
+
+.graggable{
+}
+

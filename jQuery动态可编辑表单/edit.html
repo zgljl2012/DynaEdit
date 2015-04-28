@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>动态可编辑表单</title>
+<script src="jquery/jquery-1.11.2.min.js"></script>
+<script src="jquery/jquery-ui.js"></script>
+<script src="js/my-index.js"></script>
+<link href="jquery/jquery-ui.css" rel="stylesheet"></link>
+<link href="css/my-index.css"  rel="stylesheet"></link>
+</head>
+<body>
+<div  id="visibleRange">
+    <div id="accordion">
+   	    <h3 id="a-button"><a href="#">按钮</a></h3>
+        <div>
+        <button id="button_submit" class="accordion-button">提交</button>
+        <button id="button_cancel" class="accordion-button">取消</button>
+        </div>
+        <h3 id="a-text"><a href="#">文本</a></h3>
+        <div></div>
+         <h3 id="a-edit"><a href="#">编辑框</a></h3>
+        <div></div>
+         <h3 id="a-table"><a href="#">表格</a></h3>
+        <div></div>
+        
+    </div>
+    <div id="drawArea">
+        <canvas  id="myCanvas" >
+        </canvas>
+    </div>
+</div>
+</body>
+</html>
