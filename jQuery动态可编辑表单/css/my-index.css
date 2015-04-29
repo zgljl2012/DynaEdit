@@ -24,22 +24,10 @@ html, body {height:100%;width:100%;}
 	border-color:#444444;
 }
 
-#text-large{
-	font-size:32px;
-	font-family:"宋体";
-	color:black;
+.graggable{
 }
 
-#text-medium{
-	font-size:16px;
-	margin-top:0.5em;
-}
-
-#text-small{
-	font-size:0.5em;
-	margin-top:0.5em;
-	font-family:"宋体";
-}
+/*=====================按钮区===========================*/
 
 .accordion-button{
 	float:left;
@@ -52,30 +40,50 @@ html, body {height:100%;width:100%;}
 	
 }
 
+/*=====================按钮区结束===========================*/
+
+/*=======================文本区=============================*/
+#text-large{
+	font-size:32px;
+	font-family:"宋体";
+	color:black;
+}
+
+#text-medium{
+	font-size:16px;
+	margin-top:-1.5em;
+	font-family:"宋体";
+}
+
+#text-small{
+	font-size:0.5em;
+	margin-top:0.5em;
+	font-family:"宋体";
+}
+
 .accordion-text{
 	display:block;
 	cursor:pointer;
-	width:auto;
-	height:auto;
 	margin-right:1em;
+	margin-top:0.1em;
 	font-family:"宋体";
 }
 
 .accordion-text-copy{
 	display:block;
 	cursor:pointer;
-	width:auto;
-	height:auto;
 	margin-right:1em;
+	margin-top:0.1em;
+	font-family:"宋体";
 }
 
 .text-large-copy{
-	font-size:2em;
+	font-size:32px;
 }
 
 .text-medium-copy{
-	font-size:15.7px;
-	margin-top:0.5em;
+	font-size:16px;
+	margin-top:-1.5em;
 }
 
 .text-small-copy{
@@ -83,6 +91,6 @@ html, body {height:100%;width:100%;}
 	margin-top:0.5em;
 }
 
-.graggable{
-}
+/*=====================文本结束区==========================*/
+
 

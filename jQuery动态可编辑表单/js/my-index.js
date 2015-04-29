@@ -45,7 +45,7 @@ var init = {
 	},
 	initSpareText : function(){
 		//在文本框上生成备用文本
-		spareElement.add($("#text-large") ,"span","accordion-text-copy text-large-copy");
+		spareElement.add($("#text-large") ,"p","accordion-text-copy text-large-copy");
 		spareElement.add($("#text-medium"),"div","accordion-text-copy text-medium-copy");
 		spareElement.add($("#text-small") ,"div","accordion-text-copy text-small-copy");
 	},
@@ -55,21 +55,48 @@ var init = {
 			switch($(this).attr("id")){
 				case "a-button":
 					setTimeout(function(){$(".accordion-button-copy").show()},500);
+					
+					controlHideAndShow.text.show();
 					$(".accordion-text-copy").hide();	
 					break;
 				case "a-text":
-					if($(".accordion-text-copy").size() == 0);
-						setTimeout(function(){init.initSpareText();init.initSpareText();},600);
-					setTimeout(function(){$(".accordion-text-copy").show()},500);
+					controlHideAndShow.text.show();
+					if($(".accordion-text-copy").size() == 0){
+						setTimeout(function(){
+							init.initSpareText();init.initSpareText();
+							controlHideAndShow.text.hide();
+						},400);
+					}else{
+						setTimeout(function(){
+							$(".accordion-text-copy").show();
+							controlHideAndShow.text.hide();
+						},500);
+					}
 					$(".accordion-button-copy").hide();
 					break;
 				default:
 					$(".accordion-button-copy").hide();
-					$(".accordion-text-copy").hide();					
+					$(".accordion-text-copy").hide();				
 			}
 		});
 	}
 }
+
+//针对控件的点击和拖曳进行复杂的显示与隐藏控制的统一接口
+var controlHideAndShow = {
+	text:{
+		hide : function(){
+			$("#text-large").hide();
+			$("#text-medium").hide();
+			$("#text-small").hide();
+		},
+		show : function(){
+			$("#text-large").show();
+			$("#text-medium").show();
+			$("#text-small").show();
+		}
+	},
+};
 
 //创建在控件表面上的备用控件
 var spareElement = {
@@ -94,11 +121,13 @@ var spareElement = {
 			cty = classType.substring(0,space);
 		else
 			cty = classType;
-		spareElement.setSpareByClassType(x,classType);
 		$("."+cty).draggable({cancel:".title"});//设置元素可拖曳
+		spareElement.setSpareByClassType(x,classType);
 		//给所有控件注册鼠标弹起事件,每弹起一次，就生成一个新的当前控件
 		$("."+cty).on("mouseup",function(){
+			controlHideAndShow.text.show();
 			spareElement.add(x,tag,classType);
+			controlHideAndShow.text.hide();
 		});
 	},
 	
@@ -108,6 +137,7 @@ var spareElement = {
 				$(".accordion-button-copy").button();	//设置元素
 				break;
 			case "accordion-text-copy":
+				
 				break;
 		};
 	}
