@@ -5,8 +5,9 @@
 <title>动态可编辑表单</title>
 <script src="jquery/jquery-1.11.2.min.js"></script>
 <script src="jquery/jquery-ui.js"></script>
-<script src="js/my-index.js"></script>
 <link href="jquery/jquery-ui.css" rel="stylesheet"></link>
+<script src="js/my-index.js"></script>
+<script src="js/my-canvas.js"></script>
 <link href="css/my-index.css"  rel="stylesheet"></link>
 </head>
 <body>
@@ -30,7 +31,11 @@
         
     </div>
     <div id="drawArea">
-        <canvas  id="myCanvas" >
+        <canvas  id="myCanvas" style="">
+        	<script>
+				myCanvas.id = "myCanvas";
+				myCanvas.init();
+			</script>
         </canvas>
     </div>
 </div>
